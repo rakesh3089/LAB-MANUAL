@@ -1,0 +1,78 @@
+package shapes;
+
+
+interface Shape {
+    double calculateArea(); 
+    void displayArea();
+}
+class Circle implements Shape {
+    private double radius;
+
+    
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+
+    
+    public double calculateArea() {
+        return Math.PI * radius * radius;
+    }
+
+    
+    public void displayArea() {
+        System.out.printf("Area of Circle (Radius = %.2f): %.2f\n", radius, calculateArea());
+    }
+}
+
+class Rectangle implements Shape {
+    private double length;
+    private double width;
+
+    public Rectangle(double length, double width) {
+        this.length = length;
+        this.width = width;
+    }
+
+    
+    public double calculateArea() {
+        return length * width;
+    }
+
+    public void displayArea() {
+        System.out.printf("Area of Rectangle (%.2f x %.2f): %.2f\n", length, width, calculateArea());
+    }
+}
+
+class Triangle implements Shape {
+    private double base;
+    private double height;
+
+    public Triangle(double base, double height) {
+        this.base = base;
+        this.height = height;
+    }
+
+    public double calculateArea() {
+        return 0.5 * base * height;
+    }
+
+    
+    public void displayArea() {
+        System.out.printf("Area of Triangle (Base = %.2f, Height = %.2f): %.2f\n", base, height, calculateArea());
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("=== SHAPE AREA CALCULATOR ===\n");
+
+        // Polymorphic declaration using the Shape interface reference
+        Shape circle = new Circle(5.0);
+        Shape rectangle = new Rectangle(4.0, 6.0);
+        Shape triangle = new Triangle(3.0, 8.0);
+
+        circle.displayArea();
+        rectangle.displayArea();
+        triangle.displayArea();
+    }
+}
